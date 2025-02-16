@@ -120,10 +120,10 @@ from dotenv import load_dotenv
 from utils import upload_to_hf_dataset, download_from_hf_dataset
 
 # Load environment variables from .env file
-load_dotenv()
+# load_dotenv()
 
 # Get the name of the HuggingFace dataset for TradingView to read from
-dataset_name_TradingView_input = os.getenv('dataset_name_input')
+dataset_name_TradingView_input = os.getenv('dataset_name_TradingView_input')
 
 # Get the Hugging Face API token from the environment; either set in .env file or in the environment directly in GitHub
 HF_TOKEN = os.getenv('HF_TOKEN')
@@ -154,10 +154,11 @@ latest_file_path = fr'./output/beatingmarket.csv'
 df_beatingmarket.to_csv(file_path, index=False)
 df_beatingmarket.to_csv(latest_file_path, index=False)
 
-dataset_name_BeatingMarket = os.getenv('dataset_name')
+dataset_name_BeatingMarket_output = os.getenv('dataset_name_BeatingMarket_output')
 
 # Upload each file to the dataset
-upload_to_hf_dataset(file_path, dataset_name_BeatingMarket, HF_TOKEN, repo_type="dataset")
+upload_to_hf_dataset(file_path, dataset_name_BeatingMarket_output, HF_TOKEN, repo_type="dataset")
+upload_to_hf_dataset(latest_file_path, dataset_name_BeatingMarket_output, HF_TOKEN, repo_type="dataset")
 
 
 
