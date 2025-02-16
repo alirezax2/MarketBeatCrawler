@@ -32,6 +32,10 @@ jobs:
 
       # Step 4: Execute the Python script to create a CSV
       - name: Generate CSV
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          dataset_name_BeatingMarket_output: ${{ secrets.dataset_name_BeatingMarket_output }}
+          dataset_name_TradingView_input: ${{ secrets.dataset_name_TradingView_input }}
         run: python pipeline_BeatingMarket.py
 
       # Step 5: Commit and push the generated CSV file if there are changes
